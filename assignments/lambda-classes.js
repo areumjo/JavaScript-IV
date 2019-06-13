@@ -27,6 +27,15 @@ class Instructor extends Person {
     cP() {
         console.log(this.catchPhrase.forEach());
     }
+    grading(obj) {
+        let newGrade = obj.gradePoint+= Math.floor((Math.random() - 0.5) * 30);
+        console.log(`${obj.name}'s new grade is`, newGrade);
+        if (newGrade > 70) {
+            console.log(`${obj.name} is ready to graduate from Lambda School`);
+        } else {
+
+        }
+    }
 };
 
 const fred = new Instructor({
@@ -49,6 +58,7 @@ class Student extends Person {
         this.previousBackground = att.previousBackground;
         this.className = att.className;
         this.favSubjects = att.favSubjects;
+        this.gradePoint = att.gradePoint;
     }
     listsSubjects() {
         this.favSubjects.forEach(elem => console.log(elem));
@@ -59,6 +69,13 @@ class Student extends Person {
     sprintChalleng(subject) {
         console.log(`${this.name} has begun sprint challenge on ${subject}`);
     }
+    graduate() {
+        if (this.gradePoint > 70) {
+            console.log(`${this.name} is ready to graduate from Lambda School`);
+        } else {
+         
+        }
+    }
 }
   
 const areum = new Student({
@@ -67,7 +84,8 @@ const areum = new Student({
     age: 17,
     previousBackground: 'Neuroscience',
     className: 'WEB21',
-    favSubjects: ["HTML", "CSS", "JS"]
+    favSubjects: ["HTML", "CSS", "JS"],
+    gradePoint: 76
 });
 
 areum.listsSubjects(); // HTML ; CSS ; JS
@@ -93,7 +111,7 @@ const darren = new ProjectManager({
     name: 'Darren',
     location: 'DC',
     age: 23,
-    favLanguage: 'JS',
+    favLanguage: 'LESS',
     specialty: 'Full stack web dev',
     catchPhrase: `gang gang`,
     gradClassName: 'WEB18',
@@ -104,4 +122,11 @@ const darren = new ProjectManager({
   console.log(darren.favInstructor); //Josh Knell
   darren.standUp('#web21_darren'); //Darren announces to #web21_darren, @channel stand times
   darren.debugsCode(areum, 'JS'); //Darren debugs Areum's code on JS
+
+/*  Stretch Problem  */
+
+// Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
+
+console.log(areum.gradePoint);
+darren.grading(areum);
 
