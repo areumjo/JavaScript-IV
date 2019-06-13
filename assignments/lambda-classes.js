@@ -40,3 +40,34 @@ const fred = new Instructor({
 fred.speak(); //Hello my name is Fred, I am from Bedrock
 fred.demo('JS'); //Today we are learning about JS
 fred.grade({name: 'Areum'}, 'JS'); //Areum receives a perfect score on JS
+
+class Student extends Person {
+    constructor(att) {
+        super(att)
+        this.previousBackground = att.previousBackground;
+        this.className = att.className;
+        this.favSubjects = att.favSubjects;
+    }
+    listsSubjects() {
+        this.favSubjects.forEach(elem => console.log(elem));
+    }
+    PRAssignment(sub) {
+        console.log(`${this.name} has submitted a PR for ${sub}`);
+    }
+    sprintChalleng(subject) {
+        console.log(`${this.name} has begun sprint challenge on ${subject}`);
+    }
+}
+  
+const areum = new Student({
+    name: 'Areum',
+    location: 'NY',
+    age: 17,
+    previousBackground: 'Neuroscience',
+    className: 'WEB21',
+    favSubjects: ["HTML", "CSS", "JS"]
+});
+
+areum.listsSubjects(); // HTML ; CSS ; JS
+areum.PRAssignment('JS'); // Areum has submitted a PR for JS
+areum.sprintChalleng('JavaScript'); // Areum has begun sprint challenge on JavaScript
