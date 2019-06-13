@@ -10,6 +10,7 @@ class Person {
     }
 };
 
+
 class Instructor extends Person {
     constructor(att) {
       super(att)
@@ -41,6 +42,7 @@ fred.speak(); //Hello my name is Fred, I am from Bedrock
 fred.demo('JS'); //Today we are learning about JS
 fred.grade({name: 'Areum'}, 'JS'); //Areum receives a perfect score on JS
 
+
 class Student extends Person {
     constructor(att) {
         super(att)
@@ -71,3 +73,35 @@ const areum = new Student({
 areum.listsSubjects(); // HTML ; CSS ; JS
 areum.PRAssignment('JS'); // Areum has submitted a PR for JS
 areum.sprintChalleng('JavaScript'); // Areum has begun sprint challenge on JavaScript
+
+
+class ProjectManager extends Instructor {
+    constructor(att) {
+        super(att)
+        this.gradClassName = att.gradClassName;
+        this.favInstructor = att.favInstructor;
+    }
+    standUp(slack) {
+        console.log(`${this.name} announces to ${slack}, @channel stand times`);
+    }
+    debugsCode(stuObj, sub) {
+        console.log(`${this.name} debugs ${stuObj.name}'s code on ${sub}`);
+    }
+  }
+  
+const darren = new ProjectManager({
+    name: 'Darren',
+    location: 'DC',
+    age: 23,
+    favLanguage: 'JS',
+    specialty: 'Full stack web dev',
+    catchPhrase: `gang gang`,
+    gradClassName: 'WEB18',
+    favInstructor: 'Josh Knell'
+  });
+  
+  console.log(darren.gradClassName);
+  console.log(darren.favInstructor); //Josh Knell
+  darren.standUp('#web21_darren'); //Darren announces to #web21_darren, @channel stand times
+  darren.debugsCode(areum, 'JS'); //Darren debugs Areum's code on JS
+
